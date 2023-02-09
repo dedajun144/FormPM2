@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use CodeIgnieter\Database\ConnectionInterface;
 
 /**
  * Description of UserModel
@@ -9,7 +10,18 @@ use CodeIgniter\Model;
  * @author 
  */
 class Kwh_Model extends Model {
-    protected $kwh_table = 'kwh';
+    protected $table = 'kwh';
+    protected $primatyKey = 'id';
+    protected $allowedFields = [
+        'namepop','dayalistrik','cos','arester',
+        'idpelanggan','phasa','tipecos','tipearester',
+        'rn','tn','rt','ng','sn','rs','st','r','s','t',
+        'rmcb','smcb','tmcb','rwarna','nwarna','swarna',
+        'gwarna','twarna','rmm','nmm','smm','gmm','tmm',
+        'temuan','rekomendasi'
+    ];
+
+   
 
 /* 
     private $kwh_table = 'kwh'; */
@@ -18,7 +30,7 @@ class Kwh_Model extends Model {
         parent::__construct();
     } */
 
-    function insert_kwh($namepop, 
+   /*  function insert_kwh($namepop, 
     $dayalistrik, 
     $cos, 
     $arester, 
@@ -90,6 +102,6 @@ class Kwh_Model extends Model {
             return TRUE;
         }
         return FALSE;
-    }
+    } */
 
 }

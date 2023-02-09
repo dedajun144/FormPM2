@@ -356,6 +356,11 @@
 
 
             <div class="card-body ">
+                <div class="alert alert-danger error" role="alert" style="display: none;">
+                </div>
+                <!-- KALAU SUKSES -->
+                <div class="alert alert-primary sukses" role="alert" style="display: none;">
+                </div>
 
                 <div id="personal-field">
 
@@ -596,8 +601,8 @@
                             <input class="btnAction" type="button" name="back" id="back" value="Back"
                                 style="display:none;">
                             <input class="btnAction" type="button" name="next" id="next" value="Next">
-                            <input class="btnAction" type="submit" name="finish" id="finish" value="Simpan"
-                                style="display:none;">
+                            <button class="btnAction" type="submit" name="finish" id="finish" value="Simpan"
+                                style="display:none;">Simpan</button>
                         </div>
                         <div>
 
@@ -618,7 +623,106 @@
         </ul> -->
 
 
+                <script>
+                $('#finish').on('click', function() {
 
+                    var $namepop = $('#namepop').val();
+                    var $dayalistrik = $('#dayalistrik').val();
+                    var $cos = $('#cos').val();
+                    var $arester = $('#arester').val();
+                    var $idpelanggan = $('#idpelanggan').val();
+
+                    var $phasa = $('#phasa').val();
+                    var $tipecos = $('#tipecos').val();
+                    var $tipearester = $('#tipearester').val();
+                    var $rn = $('#rn').val();
+                    var $tn = $('#tn').val();
+
+                    var $rt = $('#rt').val();
+                    var $ng = $('#ng').val();
+                    var $sn = $('#sn').val();
+                    var $rs = $('#rs').val();
+                    var $st = $('#st').val();
+
+                    var $r = $('#r').val();
+                    var $s = $('#s').val();
+                    var $t = $('#t').val();
+                    var $rmcb = $('#rmcb').val();
+                    var $smcb = $('#smcb').val();
+
+                    var $tmcb = $('#tmcb').val();
+                    var $rwarna = $('#rwarna').val();
+                    var $nwarna = $('#nwarna').val();
+                    var $swarna = $('#swarna').val();
+                    var $gwarna = $('#gwarna').val();
+
+                    var $twarna = $('#twarna').val();
+                    var $rmm = $('#rmm').val();
+                    var $nmm = $('#nmm').val();
+                    var $smm = $('#smm').val();
+                    var $gmm = $('#gmm').val();
+
+                    var $tmm = $('#tmm').val();
+                    var $temuan = $('#temuan').val();
+                    var $rekomendasi = $('#rekomendasi').val();
+
+                    $.ajax({
+                        url: "<?php echo site_url("kwhcontroller/simpan") ?>",
+                        type: "POST",
+                        data: {
+
+
+                            namepop: $namepop,
+                            dayalistrik: $dayalistrik,
+                            cos: $cos,
+                            arester: $arester,
+                            idpelanggan: $idpelanggan,
+                            phasa: $phasa,
+                            tipecos: $tipecos,
+                            tipearester: $tipearester,
+                            rn: $rn,
+                            tn: $tn,
+                            rt: $rt,
+                            ng: $ng,
+                            sn: $sn,
+                            rs: $rs,
+                            st: $st,
+                            r: $r,
+                            s: $s,
+                            t: $t,
+                            rmcb: $rmcb,
+                            smcb: $smcb,
+                            tmcb: $tmcb,
+                            rwarna: $rwarna,
+                            nwarna: $nwarna,
+                            swarna: $swarna,
+                            gwarna: $gwarna,
+                            twarna: $twarna,
+                            rmm: $rmm,
+                            nmm: $nmm,
+                            smm: $smm,
+                            gmm: $gmm,
+                            tmm: $tmm,
+                            temuan: $temuan,
+                            rekomendasi: $rekomendasi
+                        },
+                        success: function(hasil) {
+                            var $obj = $.parseJSON(hasil);
+                            if ($obj.sukses == false) {
+                                $('.sukses').hide();
+                                $('.error').show();
+                                $('.error').html($obj.error);
+                            } else {
+                                $('.error').hide();
+                                $('.sukses').show();
+                                $('.sukses').html($obj.sukses);
+                            }
+                        }
+                    });
+                    /*   bersihkan(); */
+
+                });
+                </script>
 
 
 
